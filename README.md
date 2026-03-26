@@ -18,7 +18,7 @@ Configurar infraestrutura de Bug Bounty é repetitivo. Este projeto automatiza a
 ## 🚀 Como usar
 
 ```bash
-git clone [https://github.com/SEU-USUARIO/Bounty-Provisioner.git](https://github.com/SEU-USUARIO/Bounty-Provisioner.git)
+git clone https://github.com/0Willp/Bounty-Provisioner.git
 cd Bounty-Provisioner
 chmod +x provisioner.py
 ./provisioner.py
