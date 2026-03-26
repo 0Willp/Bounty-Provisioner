@@ -7,6 +7,7 @@ import shutil
 
 HOME = os.path.expanduser("~")
 BOUNTY_DIR = os.path.join(HOME, "bounty")
+GO_BIN_PATH = os.path.join(HOME, "go", "bin")
 
 GO_TOOLS = [
     "github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest",
