@@ -92,13 +92,10 @@ def install_go_tools():
 def move_go_bins():
     print("\n[*] Moving Go binaries to /usr/bin.")
     if os.path.exists(GO_BIN_PATH):
-        move_cmd = f"sudo find {GO_BIN_PATH} -type f -executable -exec mv {{}} /usr/bin \;"
+        # O 'rf' resolve o problema do topo do projeto!
+        move_cmd = rf"sudo find {GO_BIN_PATH} -type f -executable -exec mv {{}} /usr/bin \;"
         if run_command(move_cmd, show_output=True):
             print("  [+] Binaries moved successfully!")
-        else:
-            print("  [-] Failed to move some binaries. Check permissions.")
-    else:
-        print(f"  [-] The folder {GO_BIN_PATH} was not found. Were the tools installed?")
 
 
 def install_python_tools_pipx():
