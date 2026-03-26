@@ -114,6 +114,7 @@ def main():
     prepare_system()
     create_structure()
     install_go_tools()
+    move_go_bins()
     install_python_tools_pipx()
 
     print(f"\n[!] 🛡️ Provisioning complete! You're ready. 🐼")
