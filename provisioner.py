@@ -98,6 +98,7 @@ def install_python_tools_pipx():
     for tool in PYTHON_TOOLS_PIPX:
         print(f"  [>] Installing {tool} via pipx...")
         run_command(f"pipx install {tool}")
+        print("\n")
 
 
 def show_final_banner(words=["code", "monster", "bounty"]):
