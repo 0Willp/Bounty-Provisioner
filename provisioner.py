@@ -6,7 +6,7 @@ import time
 import shutil
 
 # ==========================================
-# 1. CONFIGURAÇÕES E VARIÁVEIS DO BEAST MODE 🟢 ⚡
+# 1. CONFIGURAÇÕES E VARIÁVEIS DO BEAST MODE
 # ==========================================
 HOME = os.path.expanduser("~")
 BOUNTY_DIR = os.path.join(HOME, "bounty")
