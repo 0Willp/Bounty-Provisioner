@@ -92,7 +92,6 @@ def install_go_tools():
 def move_go_bins():
     print("\n[*] Moving Go binaries to /usr/bin.")
     if os.path.exists(GO_BIN_PATH):
-        # O 'rf' resolve o problema do topo do projeto!
         move_cmd = rf"sudo find {GO_BIN_PATH} -type f -executable -exec mv {{}} /usr/bin \;"
         if run_command(move_cmd, show_output=True):
             print("  [+] Binaries moved successfully!")
