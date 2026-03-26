@@ -1,33 +1,40 @@
-import os
-import subprocess
 import sys
 import time
-import shutil
 
 def show_banner():
-    panda_icon = "🐼"
-    sys.stdout.write(f"\r{panda_icon} Starting the process ")
-    sys.stdout.flush()
-    time.sleep(1)
+    banner = """
+                0WILLP 
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+    [+] LIFTING CODE & FINDING BUGS
+    [+] STATUS: BEAST MODE 🔋 ⚡
+    """
+    print(banner)
 
-    words = ["monster", "code", "bounty"]
-    for word in words:
-        sys.stdout.write(f"\r {panda_icon}  Starting the process -> {word} ")
+
+def show_final_banner(words=["code", "monster", "bounty"]):
+    print("=== 🛡️  Bounty-Provisioner v1.0 🛡️ ===")
+    print("▀" *36)
+
+    total = len(words)
+
+    for i, word in enumerate(words):
+        percent = int((i + 1) / total * 100)
+        bar_length = 20
+        filled_length = int(bar_length * (i + 1) // total)
+        bar = '█' * filled_length + '-' * (bar_length - filled_length)
+
+        sys.stdout.write(f"\r Are you ready ? |{bar}| {percent}% [{word}]")
         sys.stdout.flush()
-        time.sleep(0.8)
 
-    sys.stdout.write(f"\r===  🛡️  PANDY_PROVISIONER v1.0🛡️ ===\n"
-                     f"▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n")
+        time.sleep(4)
 
-    sys.stdout.flush()
+    print(f"\n\n[!] 🛡️ Provisioning complete! You're ready. 🐼")
+    print("[!] Remember to check if ~/go/bin and ~/.local/bin are in your $PATH..")
+
 
 def main():
     show_banner()
-
-
-    print(f"\n[!] 🛡️ Provisioning complete! You're ready. 🐼")
-    print("[!] Remember to check if ~/go/bin and ~/.local/bin are in your $PATH..")
-
+    show_final_banner()
 
 if __name__ == "__main__":
     main()

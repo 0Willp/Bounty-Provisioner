@@ -23,19 +23,13 @@ PYTHON_TOOLS_PIPX = [
 
 
 def show_banner():
-    panda_icon = "🐼"
-    sys.stdout.write(f"\r{panda_icon} Starting the [PANDY_ROOT] ")
-    sys.stdout.flush()
-    time.sleep(0.5)
-
-    words = ["monster", "code", "bounty"]
-    for word in words:
-        sys.stdout.write(f"\r{panda_icon} Starting the [PANDY_ROOT] -- {word} ")
-        sys.stdout.flush()
-        time.sleep(0.8)
-
-    sys.stdout.write(f"\r===  ⚡ PANDY_PROVISIONER v1.0 [BEAST MODE] ===\n\n")
-    sys.stdout.flush()
+    banner = """
+                0WILLP 
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+    [+] LIFTING CODE & FINDING BUGS
+    [+] STATUS: BEAST MODE 🔋 ⚡
+    """
+    print(banner)
 
 
 def run_command(command, show_output=False, capture_error=False):
@@ -106,6 +100,27 @@ def install_python_tools_pipx():
         run_command(f"pipx install {tool}")
 
 
+def show_final_banner(words=["code", "monster", "bounty"]):
+    print("=== 🛡️  Bounty-Provisioner v1.0 🛡️ ===")
+    print("▀" *36)
+
+    total = len(words)
+
+    for i, word in enumerate(words):
+        percent = int((i + 1) / total * 100)
+        bar_length = 20
+        filled_length = int(bar_length * (i + 1) // total)
+        bar = '█' * filled_length + '-' * (bar_length - filled_length)
+
+        sys.stdout.write(f"\r Are you ready ? |{bar}| {percent}% [{word}]")
+        sys.stdout.flush()
+
+        time.sleep(4)
+
+    print(f"\n\n[!] 🛡️ Provisioning complete! You're ready. 🐼")
+    print("[!] Remember to check if ~/go/bin and ~/.local/bin are in your $PATH..")
+
+
 def main():
     show_banner()
     prepare_system()
@@ -113,9 +128,7 @@ def main():
     install_go_tools()
     move_go_bins()
     install_python_tools_pipx()
-
-    print(f"\n[!] 🛡️ Provisioning complete! You're ready. 🐼")
-    print("[!] Remember to check if ~/go/bin and ~/.local/bin are in your $PATH..")
+    show_final_banner()
 
 
 if __name__ == "__main__":
