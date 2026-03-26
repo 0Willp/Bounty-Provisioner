@@ -102,7 +102,7 @@ def install_python_tools_pipx():
 
 def show_final_banner(words=["code", "monster", "bounty"]):
     print(f"\n\n=== 🛡️  Bounty-Provisioner v1.0 🛡️ ===")
-    print("▀" *36)
+    print("▀" *40)
 
     total = len(words)
 
@@ -112,7 +112,7 @@ def show_final_banner(words=["code", "monster", "bounty"]):
         filled_length = int(bar_length * (i + 1) // total)
         bar = '█' * filled_length + '-' * (bar_length - filled_length)
 
-        sys.stdout.write(f"\r Are you ready ? |{bar}| {percent}% [{word}]")
+        sys.stdout.write(f"\r Ready ? |{bar}| {percent}% [{word}]")
         sys.stdout.flush()
 
         time.sleep(4)
