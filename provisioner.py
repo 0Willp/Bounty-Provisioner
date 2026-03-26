@@ -27,7 +27,7 @@ def show_banner():
     sys.stdout.flush()
     time.sleep(0.5)
 
-    words = ["monster", "código", "bounty"]
+    words = ["monster", "code", "bounty"]
     for word in words:
         sys.stdout.write(f"\r{panda_icon} Starting the [PANDY_ROOT] -- {word} ")
         sys.stdout.flush()
