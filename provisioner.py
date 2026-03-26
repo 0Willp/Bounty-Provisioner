@@ -10,14 +10,14 @@ BOUNTY_DIR = os.path.join(HOME, "bounty")
 
 GO_TOOLS = [
     "github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest",
-    "github.com/projectdiscovery/httpx/cmd/httpx@latest",
-    "github.com/projectdiscovery/naabu/v2/cmd/naabu@latest",
+    #"github.com/projectdiscovery/httpx/cmd/httpx@latest",
+    #"github.com/projectdiscovery/naabu/v2/cmd/naabu@latest",
 ]
 
 
 PYTHON_TOOLS_PIPX = [
     "arjun",
-    "uro",
+    #"uro",
 ]
 
 
