@@ -101,7 +101,7 @@ def install_python_tools_pipx():
 
 
 def show_final_banner(words=["code", "monster", "bounty"]):
-    print("=== 🛡️  Bounty-Provisioner v1.0 🛡️ ===")
+    print(f"\n\n=== 🛡️  Bounty-Provisioner v1.0 🛡️ ===")
     print("▀" *36)
 
     total = len(words)
