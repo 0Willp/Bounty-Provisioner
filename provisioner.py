@@ -11,14 +11,40 @@ GO_BIN_PATH = os.path.join(HOME, "go", "bin")
 
 GO_TOOLS = [
     "github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest",
-    #"github.com/projectdiscovery/httpx/cmd/httpx@latest",
-    #"github.com/projectdiscovery/naabu/v2/cmd/naabu@latest",
+    "github.com/projectdiscovery/httpx/cmd/httpx@latest",
+    "github.com/projectdiscovery/naabu/v2/cmd/naabu@latest",
+    "go install -v github.com/owasp-amass/amass/v4/...@master",
+    "go install github.com/tomnomnom/assetfinder@latest",
+    "go install github.com/projectdiscovery/chaos-client/cmd/chaos",
+    "go install -v github.com/hakluke/haktrails@latest",
+    "go install github.com/tomnomnom/anew@latest",
+    "go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest",
+    "go install github.com/projectdiscovery/katana/cmd/katana@latest",
+    "go install github.com/003random/getJS@latest",
+    "GO111MODULE=on go get -u -v github.com/lc/subjs@latest",
+    "go install github.com/tomnomnom/waybackurls@latest",
+    "go install github.com/bp0lr/gauplus@latest",
+    "go install -v github.com/hueristiq/hqurlfind3r/v2/cmd/hqurlfind3r@latest",
+    "go install github.com/hakluke/hakcheckurl@latest",
+    "go install github.com/tomnomnom/meg@latest",
+    "go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest",
+    "go install github.com/hahwul/dalfox/v2@latest",
+    "go install github.com/takshal/freq@latest",
+    "go install github.com/j3ssie/sdlookup@latest",
+    "go install github.com/tomnomnom/httprobe@latest",
+    "go install github.com/ferreiraklet/airixss@latest",
+    "go install github.com/ferreiraklet/nilo",
+    "go install github.com/haccer/subjack@latest",
+    "go install https://github.com/ffuf/ffuf",
+    "go install github.com/tomnomnom/gf@latest",
+    "go install github.com/tomnomnom/unfurl@latest",
+    "go install github.com/ffuf/ffuf/v2@latest",
 ]
 
 
 PYTHON_TOOLS_PIPX = [
     "arjun",
-    #"uro",
+    "uro",
 ]
 
 
