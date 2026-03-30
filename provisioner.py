@@ -12,39 +12,57 @@ GO_BIN_PATH = os.path.join(HOME, "go", "bin")
 GO_TOOLS = [
     "github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest",
     "github.com/projectdiscovery/httpx/cmd/httpx@latest",
+    "github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest",
+    "github.com/projectdiscovery/katana/cmd/katana@latest",
     "github.com/projectdiscovery/naabu/v2/cmd/naabu@latest",
-    "go install -v github.com/owasp-amass/amass/v4/...@master",
-    "go install github.com/tomnomnom/assetfinder@latest",
-    "go install github.com/projectdiscovery/chaos-client/cmd/chaos",
-    "go install -v github.com/hakluke/haktrails@latest",
-    "go install github.com/tomnomnom/anew@latest",
-    "go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest",
-    "go install github.com/projectdiscovery/katana/cmd/katana@latest",
-    "go install github.com/003random/getJS@latest",
-    "GO111MODULE=on go get -u -v github.com/lc/subjs@latest",
-    "go install github.com/tomnomnom/waybackurls@latest",
-    "go install github.com/bp0lr/gauplus@latest",
-    "go install -v github.com/hueristiq/hqurlfind3r/v2/cmd/hqurlfind3r@latest",
-    "go install github.com/hakluke/hakcheckurl@latest",
-    "go install github.com/tomnomnom/meg@latest",
-    "go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest",
-    "go install github.com/hahwul/dalfox/v2@latest",
-    "go install github.com/takshal/freq@latest",
-    "go install github.com/j3ssie/sdlookup@latest",
-    "go install github.com/tomnomnom/httprobe@latest",
-    "go install github.com/ferreiraklet/airixss@latest",
-    "go install github.com/ferreiraklet/nilo",
-    "go install github.com/haccer/subjack@latest",
-    "go install https://github.com/ffuf/ffuf",
-    "go install github.com/tomnomnom/gf@latest",
-    "go install github.com/tomnomnom/unfurl@latest",
-    "go install github.com/ffuf/ffuf/v2@latest",
+    "github.com/projectdiscovery/dnsx/cmd/dnsx@latest",
+    "github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest",
+    "github.com/projectdiscovery/chaos-client/cmd/chaos@latest",
+    "github.com/tomnomnom/waybackurls@latest",
+    "github.com/tomnomnom/anew@latest",
+    "github.com/tomnomnom/qsreplace@latest",
+    "github.com/tomnomnom/unfurl@latest",
+    "github.com/tomnomnom/gf@latest",
+    "github.com/tomnomnom/assetfinder@latest",
+    "github.com/tomnomnom/httprobe@latest",
+    "github.com/ffuf/ffuf/v2@latest",
+    "github.com/jaeles-project/gospider@latest",
+    "github.com/hakluke/hakrawler@latest",
+    "github.com/hakluke/hakrevdns@latest",
+    "github.com/hahwul/dalfox/v2@latest",
+    "github.com/lc/gau/v2/cmd/gau@latest",
+    "github.com/bp0lr/gauplus@latest",
+    "github.com/lc/subjs@latest",
+    "github.com/sensepost/gowitness@latest",
+    "github.com/d3mondev/puredns/v2@latest",
+    "github.com/j3ssie/metabigor@latest",
+    "github.com/Emoe/kxss@latest",
+    "github.com/ferreiraklet/airixss@latest",
+    "github.com/edoardottt/cariddi/cmd/cariddi@latest",
+    "github.com/trufflesecurity/trufflehog/v3@latest",
+    "github.com/owasp-amass/amass/v4/...@master",
+    "github.com/haccer/subjack@latest",
+    "github.com/003random/getJS@latest",
+
+    "github.com/hakluke/haktrails@latest",
+    "github.com/hueristiq/hqurlfind3r/v2/cmd/hqurlfind3r@latest",
+    "github.com/hakluke/hakcheckurl@latest",
+    "github.com/tomnomnom/meg@latest",
+    "github.com/takshal/freq@latest",
+    "github.com/j3ssie/sdlookup@latest",
+
+
 ]
 
 
 PYTHON_TOOLS_PIPX = [
-    "arjun",
-    "uro",
+    "arjun", "uro", "certstream", "sqlmap", "ghauri", "paramspider",
+    "shodan", "censys", "bbrf", "dnsgen", "waymore", "xsstrike",
+    "s3scanner", "cloud_enum", "trufflehog"
+]
+
+GIT_CLONE_TOOLS = [
+    "https://github.com/GerbenJavado/LinkFinder.git",
 ]
 
 
@@ -95,11 +113,11 @@ def prepare_system():
 
 
 def create_structure():
-    print("\n[*] Creating a directory structure `~/bounty`...")
-    folders = [BOUNTY_DIR, os.path.join(BOUNTY_DIR, "tools"), os.path.join(BOUNTY_DIR, "targets")]
+    print("\n[*] Creating directory structure `~/bounty`...")
+    folders = [BOUNTY_DIR, os.path.join(BOUNTY_DIR, "tools"), os.path.join(BOUNTY_DIR, "targets"), os.path.join(BOUNTY_DIR, "wordlists")]
     for folder in folders:
         os.makedirs(folder, exist_ok=True)
-        print(f"  [+] Ready paste: {folder}")
+        print(f"  [+] Ready folder: {folder}")
 
 
 def install_go_tools():
@@ -124,6 +142,90 @@ def install_python_tools_pipx():
     for tool in PYTHON_TOOLS_PIPX:
         print(f"   [>] Installing {tool} via pipx...")
         run_command(f"pipx install {tool}\n")
+
+
+def install_external_tools():
+    print("\n[*] Installing external tools (Git/Wget)...")
+    tools_dir = os.path.join(BOUNTY_DIR, "tools")
+
+    # LinkFinder
+    print("  [>] Installing LinkFinder...")
+    lf_dir = os.path.join(tools_dir, "LinkFinder")
+    if not os.path.exists(lf_dir):
+        run_command(f"git clone https://github.com/GerbenJavado/LinkFinder.git {lf_dir}")
+        run_command(f"cd {lf_dir} && pip3 install -r requirements.txt --break-system-packages")
+
+    # SecretFinder
+    print("  [>] Installing SecretFinder...")
+    sf_dir = os.path.join(tools_dir, "SecretFinder")
+    if not os.path.exists(sf_dir):
+        run_command(f"git clone https://github.com/m4ll0k/SecretFinder.git {sf_dir}")
+        run_command(f"cd {sf_dir} && pip3 install -r requirements.txt --break-system-packages")
+
+    # Findomain
+    print("  [>] Installing Findomain...")
+    if not shutil.which("findomain"):
+        run_command(
+            f"cd {tools_dir} && wget https://github.com/Findomain/Findomain/releases/latest/download/findomain-linux.zip")
+        run_command(f"cd {tools_dir} && unzip -o findomain-linux.zip")
+        run_command(f"cd {tools_dir} && chmod +x findomain && sudo mv findomain /usr/bin/")
+        run_command(f"cd {tools_dir} && rm findomain-linux.zip")
+
+    # MassDNS
+    print("  [>] Installing MassDNS...")
+    massdns_dir = os.path.join(tools_dir, "massdns")
+    if not shutil.which("massdns"):
+        run_command(f"git clone https://github.com/blechschmidt/massdns.git {massdns_dir}")
+        run_command(f"cd {massdns_dir} && make")
+        run_command(f"sudo mv {massdns_dir}/bin/massdns /usr/bin/")
+
+    # GF Patterns
+    print("  [>] Installing GF Patterns...")
+    gf_repo_dir = os.path.join(tools_dir, "Gf-Patterns")
+    gf_dir = os.path.join(HOME, ".gf")
+    os.makedirs(gf_dir, exist_ok=True)
+    if not os.path.exists(gf_repo_dir):
+        run_command(f"git clone https://github.com/1ndianl33t/Gf-Patterns.git {gf_repo_dir}")
+        run_command(f"cp {gf_repo_dir}/*.json {gf_dir}/")
+
+
+def download_wordlists():
+    print("\n[*] Downloading essential wordlists (This might take a while)...")
+    wordlist_dir = os.path.join(BOUNTY_DIR, "wordlists")
+
+    # SecLists
+    print("  [>] Cloning SecLists...")
+    seclists_dir = os.path.join(wordlist_dir, "SecLists")
+    if not os.path.exists(seclists_dir):
+        run_command(f"git clone https://github.com/danielmiessler/SecLists.git {seclists_dir}")
+    else:
+        print("      [i] SecLists already exists. Skipping.")
+
+    # Assetnote Wordlists
+    print("  [>] Downloading Assetnote Wordlists...")
+    assetnote_dir = os.path.join(wordlist_dir, "data")
+    if not os.path.exists(assetnote_dir):
+        run_command(
+            f"cd {wordlist_dir} && wget -q -r --no-parent -R \"index.html*\" https://wordlists-cdn.assetnote.io/data/ -nH")
+    else:
+        print("      [i] Assetnote wordlists already exist. Skipping.")
+
+    # OneListForAll
+    print("  [>] Cloning OneListForAll...")
+    onelist_dir = os.path.join(wordlist_dir, "OneListForAll")
+    if not os.path.exists(onelist_dir):
+        run_command(f"git clone https://github.com/six2dez/OneListForAll.git {onelist_dir}")
+    else:
+        print("      [i] OneListForAll already exists. Skipping.")
+
+    # Resolvers (Trickest)
+    print("  [>] Downloading Trickest Resolvers...")
+    run_command(
+        f"wget -q https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt -O {wordlist_dir}/resolvers.txt")
+    run_command(
+        f"wget -q https://raw.githubusercontent.com/trickest/resolvers/main/resolvers-trusted.txt -O {wordlist_dir}/resolvers-trusted.txt")
+
+    print(f"  [+] Wordlists successfully downloaded into {wordlist_dir}")
 
 
 def show_final_banner(words=["code", "monster", "bounty"]):
@@ -154,6 +256,8 @@ def main():
     install_go_tools()
     move_go_bins()
     install_python_tools_pipx()
+    install_external_tools()
+    download_wordlists()
     show_final_banner()
 
 
