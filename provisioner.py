@@ -70,7 +70,7 @@ def show_banner():
     banner = """
                 0WILLP 
     ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-    [+] LIFTING CODE & FINDING BUGS
+    [+] LIFTING CODE & FINDING BUGS ☠️
     [+] STATUS: BEAST MODE 🔋 ⚡
     """
     print(banner)
