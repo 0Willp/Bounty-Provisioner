@@ -29,7 +29,7 @@ Setting up Bug Bounty infrastructure is repetitive and prone to errors. This pro
 
 ```bash
 # Clone the repository
-git clone [https://github.com/0Willp/Bounty-Provisioner.git](https://github.com/0Willp/Bounty-Provisioner.git)
+git clone https://github.com/0Willp/Bounty-Provisioner.git
 
 # Enter the directory
 cd Bounty-Provisioner
