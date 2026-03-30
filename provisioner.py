@@ -4,6 +4,7 @@ import subprocess
 import sys
 import time
 import shutil
+import argparse
 
 HOME = os.path.expanduser("~")
 BOUNTY_DIR = os.path.join(HOME, "bounty")
@@ -250,14 +251,42 @@ def show_final_banner(words=["code", "monster", "bounty"]):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Bounty-Provisioner CLI")
+    parser.add_argument("--system", action="store_true", help="Update system and deps")
+    parser.add_argument("--structure", action="store_true", help="Create folder structure")
+    parser.add_argument("--go", action="store_true", help="Install Go tools")
+    parser.add_argument("--python", action="store_true", help="Install Python tools")
+    parser.add_argument("--external", action="store_true", help="Install Git/Wget tools")
+    parser.add_argument("--wordlists", action="store_true", help="Download wordlists")
+    parser.add_argument("--all", action="store_true", help="Run full provisioner (Default)")
+
+    args = parser.parse_args()
+
+    if not any(vars(args).values()) or args.all:
+        for arg in vars(args):
+            setattr(args, arg, True)
+
     show_banner()
-    prepare_system()
-    create_structure()
-    install_go_tools()
-    move_go_bins()
-    install_python_tools_pipx()
-    install_external_tools()
-    download_wordlists()
+
+    if args.system:
+        prepare_system()
+
+    if args.structure:
+        create_structure()
+
+    if args.go:
+        install_go_tools()
+        move_go_bins()
+
+    if args.python:
+        install_python_tools_pipx()
+
+    if args.external:
+        install_external_tools()
+
+    if args.wordlists:
+        download_wordlists()
+
     show_final_banner()
 
 
