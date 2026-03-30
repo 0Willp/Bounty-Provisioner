@@ -46,8 +46,6 @@ python3 provisioner.py -h
 # To test only the Go tools installation:
 python3 provisioner.py --go
 
-# To install external tools and wordlists only:
-python3 provisioner.py --external --wordlists 
 ```
 ## 📂 Directory Structure
 ```bash
