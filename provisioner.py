@@ -104,7 +104,7 @@ def prepare_system():
     commands = [
         "sudo DEBIAN_FRONTEND=noninteractive apt-get update -y",
         "sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y",
-        "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip git curl wget jq libpcap-dev"
+        "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip git curl wget jq libpcap-dev unzip make cargo"
     ]
     for cmd in commands:
         run_command(cmd)
@@ -164,16 +164,19 @@ def install_external_tools():
     else:
         print("  [*] SecretFinder already exists. Skipping.")
 
-    # Findomain
-    print("  [>] Installing Findomain...")
+    # Findomain (Updated: Build from Source)
+    print("  [>] Installing Findomain (Source Compilation)...")
+    fd_dir = os.path.join(tools_dir, "findomain")
     if not shutil.which("findomain"):
-        run_command(
-            f"cd {tools_dir} && wget https://github.com/Findomain/Findomain/releases/latest/download/findomain-linux.zip")
-        run_command(f"cd {tools_dir} && unzip -o findomain-linux.zip")
-        run_command(f"cd {tools_dir} && chmod +x findomain && sudo mv findomain /usr/bin/")
-        run_command(f"cd {tools_dir} && rm findomain-linux.zip")
-    else:
-        print("  [*] Findomain already exists. Skipping.")
+        if not os.path.exists(fd_dir):
+            run_command(f"git clone https://github.com/findomain/findomain.git {fd_dir}")
+        print("      [*] Compiling with Cargo... (This may take a moment)")
+        if run_command(f"cd {fd_dir} && cargo build --release"):
+            run_command(f"sudo cp {fd_dir}/target/release/findomain /usr/bin/")
+            print("      [+] Findomain installed and compiled successfully!")
+        else:
+            print("  [*] Findomain already exists. Skipping.")
+
 
     # MassDNS
     print("  [>] Installing MassDNS...")
