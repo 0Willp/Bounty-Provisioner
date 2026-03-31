@@ -56,9 +56,7 @@ GO_TOOLS = [
 
 
 PYTHON_TOOLS_PIPX = [
-    "arjun", "uro", "certstream", "sqlmap", "ghauri", "paramspider",
-    "shodan", "censys", "bbrf", "dnsgen", "waymore", "xsstrike",
-    "s3scanner", "cloud_enum", "trufflehog"
+    "arjun", "uro", "certstream", "sqlmap","shodan", "censys", "bbrf", "dnsgen", "waymore", "xsstrike","s3scanner", "trufflehog"
 ]
 
 GIT_CLONE_TOOLS = [
@@ -154,6 +152,8 @@ def install_external_tools():
     if not os.path.exists(lf_dir):
         run_command(f"git clone https://github.com/GerbenJavado/LinkFinder.git {lf_dir}")
         run_command(f"cd {lf_dir} && pip3 install -r requirements.txt --break-system-packages")
+    else:
+        print("  [*] LinkFinder already exists. Skipping.")
 
     # SecretFinder
     print("  [>] Installing SecretFinder...")
@@ -161,6 +161,8 @@ def install_external_tools():
     if not os.path.exists(sf_dir):
         run_command(f"git clone https://github.com/m4ll0k/SecretFinder.git {sf_dir}")
         run_command(f"cd {sf_dir} && pip3 install -r requirements.txt --break-system-packages")
+    else:
+        print("  [*] SecretFinder already exists. Skipping.")
 
     # Findomain
     print("  [>] Installing Findomain...")
@@ -170,6 +172,8 @@ def install_external_tools():
         run_command(f"cd {tools_dir} && unzip -o findomain-linux.zip")
         run_command(f"cd {tools_dir} && chmod +x findomain && sudo mv findomain /usr/bin/")
         run_command(f"cd {tools_dir} && rm findomain-linux.zip")
+    else:
+        print("  [*] Findomain already exists. Skipping.")
 
     # MassDNS
     print("  [>] Installing MassDNS...")
@@ -178,6 +182,8 @@ def install_external_tools():
         run_command(f"git clone https://github.com/blechschmidt/massdns.git {massdns_dir}")
         run_command(f"cd {massdns_dir} && make")
         run_command(f"sudo mv {massdns_dir}/bin/massdns /usr/bin/")
+    else:
+        print("  [*] MassDNS already exists. Skipping.")
 
     # GF Patterns
     print("  [>] Installing GF Patterns...")
@@ -187,6 +193,16 @@ def install_external_tools():
     if not os.path.exists(gf_repo_dir):
         run_command(f"git clone https://github.com/1ndianl33t/Gf-Patterns.git {gf_repo_dir}")
         run_command(f"cp {gf_repo_dir}/*.json {gf_dir}/")
+    else:
+        print("  [*] GF Patterns already exists. Skipping.")
+
+    print("  [>] Installing Paramspider...")
+    pr_dir = os.path.join(tools_dir, "Paramspider")
+    if not os.path.exists(pr_dir):
+        run_command(f"git clone https://github.com/devanshbatham/paramspider {pr_dir}")
+        run_command(f"cd {pr_dir} && pip3 install . --break-system-packages")
+    else:
+        print("      [*] Paramspider already exists. Skipping.")
 
 
 def download_wordlists():
