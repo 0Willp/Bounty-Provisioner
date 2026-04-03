@@ -19,6 +19,7 @@ GO_TOOLS = [
     "github.com/projectdiscovery/dnsx/cmd/dnsx@latest",
     "github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest",
     "github.com/projectdiscovery/chaos-client/cmd/chaos@latest",
+    "github.com/projectdiscovery/notify/cmd/notify@latest",
     "github.com/tomnomnom/waybackurls@latest",
     "github.com/tomnomnom/anew@latest",
     "github.com/tomnomnom/qsreplace@latest",
