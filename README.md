@@ -57,7 +57,6 @@ python3 provisioner.py --go
 ## 🐼 Hunter Mindset
 "Tools don't find bugs, researchers do. Tools just make the haystack smaller."
 
-This provisioner ensures you have the sharpest needles ready. After installation, remember to configure your API keys (Shodan, Chaos, GitHub) in the respective tool config files (usually in ~/.config/).
 
 ## ⚖️ Legal Disclaimer
 This project is for educational and ethical security research purposes only. The author is not responsible for any misuse of the tools installed by this script. Only target systems within authorized scope.
