@@ -8,58 +8,58 @@ O Bounty-Provisioner é um script de automação robusto, projetado para transfo
 
 ---
 
-## 🎯 Purpose
-Setting up Bug Bounty infrastructure is repetitive and prone to errors. This project automates the installation of the best Recon, Fuzzing, and Web Hacking tools available, while maintaining a clean and organized directory structure.
+## 🎯 Propósito
+Configurar uma infraestrutura de *Bug Bounty* é uma tarefa repetitiva e propensa a erros. Este projeto automatiza a instalação das melhores ferramentas de *Recon*, *Fuzzing* e *Web Hacking* disponíveis, mantendo uma estrutura de diretórios limpa e organizada.
 
-## 🚀 Main Features
+## 🚀 Principais recursos
 
 | Module             | Description |
 |:-------------------| :--- |
-| **System**         | Updates `apt` and installs critical dependencies (`libpcap`, `make`, `unzip`, `jq`). |
-| **Structure**      | Creates a standardized `~/bounty` workspace with `tools`, `targets`, and `wordlists` folders. |
-| **Go Tools**       | Installs 30+ essential Go tools (Subfinder, Httpx, Nuclei, Katana, Amass, etc.). |
-| **Python (pipx)**  | Installs Python tools in isolated environments to avoid dependency hell (Arjun, ParamSpider, Sqlmap). |
-| **External Tools** | Clones and compiles tools that require manual setup (LinkFinder, SecretFinder, MassDNS). |
-| **Wordlists**      | Downloads high-quality lists: SecLists, Assetnote, and Trickest Resolvers. |
-| **CLI Engine**     | Advanced flag system for modular installation and isolated testing. |
+| **Sisema**         |Atualiza o `apt` e instala dependências críticas (`libpcap`, `make`, `unzip`, `jq`). |
+| **Estrutura**      | Cria um espaço de trabalho `~/bounty` padronizado, com as pastas `tools`, `targets` e `wordlists`. |
+| **Ferramentas do Go**       | Instala mais de 30 ferramentas essenciais em Go (Subfinder, Httpx, Nuclei, Katana, Amass, etc.). |
+| **Python (pipx)**  | Instala ferramentas Python em ambientes isolados para evitar o "inferno das dependências" (Arjun, ParamSpider, Sqlmap). |
+| **Ferramentas Externas** |Clona e compila ferramentas que exigem configuração manual (LinkFinder, SecretFinder, MassDNS). |
+| **Wordlists**      | Baixa listas de alta qualidade: SecLists, Assetnote e Trickest Resolvers. |
+| **Mecanismo de CLI**     | Sistema avançado de flags para instalação modular e testes isolados. |
 
 ---
 
-## 📦 Installation & Usage
+## 📦 Instalação e uso
 
 ```bash
-# Clone the repository
+# Clone o repositório
 git clone https://github.com/0Willp/Bounty-Provisioner.git
 
-# Enter the directory
+# Entre no diretório
 cd Bounty-Provisioner
 
-# Grant execution permission
+#Conceder permissão de execução
 chmod +x provisioner.py
 
-# Run full installation
+# Executar a instalação completa
 python3 provisioner.py
 
-# Displays the help menu
+# Exibe o menu de ajuda
 python3 provisioner.py -h
 
-# To test only the Go tools installation:
+# Para testar apenas a instalação das ferramentas do Go
 python3 provisioner.py --go
 
 ```
-## 📂 Directory Structure
+## 📂 Estrutura de diretórios
 ```bash
 ~/bounty/
-├── targets/     # Scan reports and domain-specific data
-├── tools/       # Tools installed via Git/Wget (LinkFinder, MassDNS...)
-└── wordlists/   # Essential lists (SecLists, Assetnote, Resolvers) 
+├── targets/     # Relatórios de varredura e dados específicos do domínio
+├── tools/       # Ferramentas instaladas via Git/Wget (LinkFinder, MassDNS...)
+└── wordlists/   # Listas essenciais (SecLists, Assetnote, Resolvers)
 ```
-## 🐼 Hunter Mindset
-"Tools don't find bugs, researchers do. Tools just make the haystack smaller."
+## 🐼 Mentalidade
+"Ferramentas não encontram bugs; pesquisadores, sim. As ferramentas apenas tornam o palheiro menor."
 
 
-## ⚖️ Legal Disclaimer
-This project is for educational and ethical security research purposes only. The author is not responsible for any misuse of the tools installed by this script. Only target systems within authorized scope.
+## ⚖️ Aviso Legal
+Este projeto destina-se exclusivamente a fins educacionais e de pesquisa ética em segurança. O autor não se responsabiliza por qualquer uso indevido das ferramentas instaladas por este script. Realize testes apenas em sistemas dentro do escopo autorizado.
 
-Developed by 0WILLP 
-🐼 | Lifting code & Finding bugs
+Desenvolvido por 0WILLP 
+🐼 | Escrevendo código e encontrando bugs.
