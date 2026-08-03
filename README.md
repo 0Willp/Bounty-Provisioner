@@ -1,6 +1,6 @@
 # 🐼 Bounty-Provisioner v1.0
 
-Bounty-Provisioner is a robust automation script designed to transform a clean Linux installation (Debian/Ubuntu/Kali) into a complete Bug Bounty workstation. From subdomain recognition to hidden parameter discovery, this script prepares your entire arsenal.
+O Bounty-Provisioner é um script de automação robusto, projetado para transformar uma instalação limpa do Linux (Debian/Ubuntu/Kali) em uma estação de trabalho completa para Bug Bounty. Do reconhecimento de subdomínios à descoberta de parâmetros ocultos, este script prepara todo o seu arsenal.
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
